@@ -1,0 +1,7 @@
+num,num,num,class
+10,1.30,60,"criança"
+10,1.65,48,"criança"
+10,1.40,35,"criança"
+20,1.95,120,"adulto"
+20,1.80,60,"adulto"
+20,1.70,90,"adulto"
