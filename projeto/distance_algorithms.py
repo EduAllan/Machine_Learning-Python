@@ -54,14 +54,14 @@ class HammingDistance(object):
     def distance(self,elemento1,elemento2):
         tamanho=max(float(len(elemento1)),float(len(elemento2)))
 
-        qtd_igual=0.0
+        diference=0.0
         for letra1,letra2 in zip(elemento1,elemento2):
             if(letra1 != letra2):
 
-                qtd_igual+=1
+                diference+=1
 
 
-        return (qtd_igual+abs(len(elemento1)-len(elemento2)))/tamanho
+        return (diference+abs(len(elemento1)-len(elemento2)))/tamanho
 
 
 h=HammingDistance()
