@@ -9,13 +9,8 @@ class Distance(object):
     def __init__(self,instances):
         self.instances=instances
 
-
-
     #toda classe que herdar de Distance deve implementar uma funcao que receba exatamente esses atributos e retornar uma lista de instancias
     def search_distance(self,entrada):
-
-
-
         pass
 
 
@@ -41,7 +36,7 @@ class EuclidianDistance(Distance):
 
 
 
-    def distanciaEuclidiana(self,instance,entrada):
+    def calcEuclidianDistance(self,instance,entrada):
             resultado=0
 
             for elemento1,elemento2 in zip(instance.num_columns,entrada.num_columns):
