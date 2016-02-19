@@ -1,6 +1,8 @@
 from math import sqrt, pow
 import numpy as np
 import csv
+from projeto.distance_algorithms import EuclidianDistance
+
 __author__ = 'allan'
 
 class KNN(object):
@@ -22,6 +24,7 @@ class KNN(object):
         self.loadMatrix(arquivo)
         self.min_max()
         self.normalizacao()
+        self.distancia=EuclidianDistance(self.instances)
 
         print self.matrizNumber
 
@@ -123,14 +126,9 @@ class KNN(object):
         return sqrt(resultado)
 
 
-    def distanceSet(self,instancia2):
-        lista=[]
+    def findNeightbours(self,entrada):
 
-        for i,instancia in enumerate(self.matrizNumber):
-            resultado=self.distanciaEuclidiana(instancia,self.matrizStr[i],instancia2)
-            lista.append([self.matrizClass[i],resultado])
 
-        return lista
 
     def min_max(self):
         matriz=np.array(self.matrizNumber)
