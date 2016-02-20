@@ -25,8 +25,8 @@ class Instance(object):
                 self.instance_class = i;
 
     def normalize(self,min,max):
-        for i,j,k in zip(min,max,self.num_columns):
-            k = (k-i)/(j-i)
+        for i in range(len(min)):
+            self.num_columns[i] = (self.num_columns[i]-min[i])/(max[i]-min[i])
 
 
 
@@ -42,26 +42,30 @@ class Instances(object):
     maximum = []
 
     def __init__(self,file):
+        #Inicializa os atributos
         self.data_set = []
         self.header = []
         self.minimum = []
         self.maximum = []
 
+        #Abre o arquivo
         file = open(file,'rb')
         files=list(csv.reader(file,delimiter=','))
-        #print files
-        self.header=files.pop(0);
+        self.header=files[0]
 
-        for a in range(0,len(files)):
-            self.data_set.append(Instance(files[a],self.header));
+        #Alimenta o dataset
+        for a in range(1,len(files)):
+            self.data_set.append(Instance(files[a],self.header))
 
-        self.maximum = copy.copy(self.data_set[0].num_columns);
-        self.minimum = copy.copy(self.data_set[0].num_columns);
+        #Normaliza o dataset
+        self.normalize_dataset()
 
-        self.find_min_max()
-        #self.normalize_dataset()
 
     def normalize_dataset(self):
+        self.maximum = copy.copy(self.data_set[0].num_columns)
+        self.minimum = copy.copy(self.data_set[0].num_columns)
+        self.find_min_max()
+
         for inst in self.data_set:
             inst.normalize(self.minimum,self.maximum)
 
@@ -75,8 +79,9 @@ class Instances(object):
 teste = Instances('entrada.txt');
 #print teste.data_set
 #print teste.header
-print teste.data_set[1]
+for i in teste.data_set:
+    print i
 #print teste.data_set[2]
-print teste.maximum
-print teste.minimum
+print "max:",teste.maximum
+print "min:",teste.minimum
 
