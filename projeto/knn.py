@@ -17,10 +17,12 @@ class KNN(object):
 
     def classify(self,input):
         distances = self.distance_algorithm.search_distance(self.instances,input)
+        print distances
         list = []
 
         for i in range(self.K):
             list.append(distances[i][0])
+
 
 
         return max(list,key=list.count)
@@ -28,5 +30,10 @@ class KNN(object):
 
 teste = Instances('entrada.txt')
 classifier = KNN(teste,3)
+<<<<<<< HEAD
 input = Instance([10,1.30,60],["num","num","num"])
+=======
+input = Instance([7.0,3.2,4.7,1.4],["num","num","num","num"])
+input.normalize(teste.minimum,teste.maximum)
+>>>>>>> fef09337d10383ba00f47c556654477d42f09e9c
 print classifier.classify(input)
