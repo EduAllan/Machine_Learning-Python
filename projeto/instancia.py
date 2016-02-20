@@ -69,13 +69,3 @@ class Instances(object):
             for j in range(len(i.num_columns)):
                 self.minimum[j] = min([self.minimum[j],i.num_columns[j]])
                 self.maximum[j] = max([self.maximum[j],i.num_columns[j]])
-
-teste = Instances('entrada.txt');
-#print teste.data_set
-#print teste.header
-for i in teste.data_set:
-    print i
-#print teste.data_set[2]
-print "max:",teste.maximum
-print "min:",teste.minimum
-

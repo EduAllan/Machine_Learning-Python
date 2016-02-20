@@ -2,6 +2,8 @@ from math import sqrt, pow
 import numpy as np
 import csv
 from projeto.distance_algorithms import EuclidianDistance
+from projeto.instancia import Instances
+from projeto.instancia import Instance
 
 __author__ = 'allan'
 
@@ -23,3 +25,8 @@ class KNN(object):
 
         return max(list,key=list.count())
 
+
+teste = Instances('entrada.txt')
+classifier = KNN(teste,3)
+input = Instance([10,1.30,60],["num","num","num"])
+print classifier.classify(input)

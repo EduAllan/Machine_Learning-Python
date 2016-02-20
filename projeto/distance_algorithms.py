@@ -26,7 +26,7 @@ class EuclidianDistance(Distance):
     def search_distance(self,instances,input):
         lista=[]
 
-        for i,instance in enumerate(instances):
+        for i,instance in enumerate(instances.data_set):
             result=self.calcEuclidianDistance(instance,input)
             lista.append([instance.instance_class,result])
         lista.sort(key = lambda c: c[1])
