@@ -14,11 +14,11 @@ class KNN(object):
         self.distance_algorithm = EuclidianDistance()
 
     def classify(self,input):
-        distances = self.distance_algorithm
+        distances = self.distance_algorithm.search_distance(self.instances,input)
         list = []
 
         for i in range(self.K):
-            list.append(distances[i])
+            list.append(distances[i][0])
 
         return max(list,key=list.count())
 
