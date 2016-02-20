@@ -23,10 +23,10 @@ class KNN(object):
             list.append(distances[i][0])
 
 
-        return max(list,key=list.count())
+        return max(list,key=list.count)
 
 
 teste = Instances('entrada.txt')
 classifier = KNN(teste,3)
-input = Instance([10,1.30,60],["num","num","num"])
+input = Instance([6.5,3.0,5.2,2.0],["num","num","num","num"])
 print classifier.classify(input)
