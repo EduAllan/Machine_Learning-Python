@@ -65,7 +65,6 @@ class Instances(object):
 
     def find_min_max(self):
         for i in self.data_set:
-            print len(i.num_columns)
             for j in range(len(i.num_columns)):
                 self.minimum[j] = min([self.minimum[j],i.num_columns[j]])
                 self.maximum[j] = max([self.maximum[j],i.num_columns[j]])

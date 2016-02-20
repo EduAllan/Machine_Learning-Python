@@ -143,4 +143,3 @@ num,num,num,num,class
 6.7,3.3,5.7,2.5,Iris-virginica
 6.7,3.0,5.2,2.3,Iris-virginica
 6.3,2.5,5.0,1.9,Iris-virginica
-

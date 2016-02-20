@@ -42,7 +42,6 @@ class EuclidianDistance(Distance):
                 result+= pow(element1-element2,2)
             for element1,element2 in zip(instance.str_columns,input.str_columns):
                 result+=pow(self.distanceSTR.distance(element1,element2),2)
-
             return sqrt(result)
 
 
