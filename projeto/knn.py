@@ -20,5 +20,6 @@ class KNN(object):
         for i in range(self.K):
             list.append(distances[i][0])
 
+
         return max(list,key=list.count())
 
