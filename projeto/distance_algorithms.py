@@ -28,8 +28,8 @@ class EuclidianDistance(Distance):
         lista=[]
 
         for i,instance in enumerate(self.instances):
-            resultado=self.distanciaEuclidiana(instance,entrada)
-            lista.append([instance,resultado])
+            resultado=self.calcEuclidianDistance(instance,entrada)
+            lista.append([instance.instance_class,resultado])
         lista.sort(key = lambda c: c[1])
         return lista
 

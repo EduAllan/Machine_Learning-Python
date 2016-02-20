@@ -1,4 +1,4 @@
-__author__ = 'allan'
+__author__ = 'eduardo'
 
 import csv
 import copy
@@ -27,12 +27,6 @@ class Instance(object):
     def normalize(self,min,max):
         for i in range(len(min)):
             self.num_columns[i] = (self.num_columns[i]-min[i])/(max[i]-min[i])
-
-
-
-
-
-
 
 
 class Instances(object):
