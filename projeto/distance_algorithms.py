@@ -38,9 +38,9 @@ class EuclidianDistance(Distance):
     def calcEuclidianDistance(self,instance,input):
             result=0
 
-            for elemento1,elemento2 in zip(instance.num_columns,entrada.num_columns):
+            for elemento1,elemento2 in zip(instance.num_columns,input.num_columns):
                 result+= pow(elemento1-elemento2,2)
-            for elemento1,elemento2 in zip(instance.str_columns,entrada.str_columns):
+            for elemento1,elemento2 in zip(instance.str_columns,input.str_columns):
                 result+=pow(self.distanceSTR.distance(elemento1,elemento2),2)
 
             return sqrt(result)
