@@ -16,7 +16,7 @@ class Distance(object):
 
 class EuclidianDistance(Distance):
 
-    def __init__(self,instances):
+    def __init__(self):
 
         self.distanceSTR=HammingDistance()
 
@@ -38,10 +38,10 @@ class EuclidianDistance(Distance):
     def calcEuclidianDistance(self,instance,input):
             result=0
 
-            for elemento1,elemento2 in zip(instance.num_columns,input.num_columns):
-                result+= pow(elemento1-elemento2,2)
-            for elemento1,elemento2 in zip(instance.str_columns,input.str_columns):
-                result+=pow(self.distanceSTR.distance(elemento1,elemento2),2)
+            for element1,element2 in zip(instance.num_columns,input.num_columns):
+                result+= pow(element1-element2,2)
+            for element1,element2 in zip(instance.str_columns,input.str_columns):
+                result+=pow(self.distanceSTR.distance(element1,element2),2)
 
             return sqrt(result)
 
