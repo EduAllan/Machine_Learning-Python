@@ -8,8 +8,17 @@ __author__ = 'allan'
 class KNN(object):
     K = 0
 
-    def __init__(self,instances,k):
+    def __init__(self,instances,k=1):
         self.instances = instances
         self.K = k
-        self.distance_algorithm = EuclidianDistance(self.instances)
+        self.distance_algorithm = EuclidianDistance()
+
+    def classify(self,input):
+        distances = self.distance_algorithm
+        list = []
+
+        for i in range(self.K):
+            list.append(distances[i])
+
+        return max(list,key=list.count())
 
