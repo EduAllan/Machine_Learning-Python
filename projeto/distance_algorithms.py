@@ -1,4 +1,4 @@
-from copy import copy
+
 from math import sqrt
 
 __author__ = 'allan'
@@ -6,11 +6,10 @@ __author__ = 'allan'
 
 #Super classe que deve ser utilizada para modelar algum tipo de distancia
 class Distance(object):
-    def __init__(self,instances):
-        self.instances=instances
+
 
     #toda classe que herdar de Distance deve implementar uma funcao que receba exatamente esses atributos e retornar uma lista de instancias
-    def search_distance(self,entrada):
+    def search_distance(self,instances,input):
         pass
 
 
@@ -20,50 +19,50 @@ class EuclidianDistance(Distance):
     def __init__(self,instances):
 
         self.distanceSTR=HammingDistance()
-        super(Distance, self).__init__()
 
-        print self.instances
 
-    def search_distance(self,entrada):
+
+
+    def search_distance(self,instances,input):
         lista=[]
 
-        for i,instance in enumerate(self.instances):
-            resultado=self.calcEuclidianDistance(instance,entrada)
-            lista.append([instance.instance_class,resultado])
+        for i,instance in enumerate(instances):
+            result=self.calcEuclidianDistance(instance,input)
+            lista.append([instance.instance_class,result])
         lista.sort(key = lambda c: c[1])
         return lista
 
 
 
 
-    def calcEuclidianDistance(self,instance,entrada):
-            resultado=0
+    def calcEuclidianDistance(self,instance,input):
+            result=0
 
             for elemento1,elemento2 in zip(instance.num_columns,entrada.num_columns):
-                resultado+= pow(elemento1-elemento2,2)
+                result+= pow(elemento1-elemento2,2)
             for elemento1,elemento2 in zip(instance.str_columns,entrada.str_columns):
-                resultado+=pow(self.distanceSTR.distance(elemento1,elemento2),2)
+                result+=pow(self.distanceSTR.distance(elemento1,elemento2),2)
 
-            return sqrt(resultado)
+            return sqrt(result)
 
 
 
 class HammingDistance(object):
 
 
-    def distance(self,elemento1,elemento2):
-        tamanho=max(float(len(elemento1)),float(len(elemento2)))
+    def distance(self,element1,element2):
+        tamanho=max(float(len(element1)),float(len(element2)))
 
         diference=0.0
-        for letra1,letra2 in zip(elemento1,elemento2):
+        for letra1,letra2 in zip(element1,element2):
             if(letra1 != letra2):
 
                 diference+=1
 
 
-        return (diference+abs(len(elemento1)-len(elemento2)))/tamanho
+        return (diference+abs(len(element1)-len(element2)))/tamanho
 
 
-h=HammingDistance()
-print h.distance('abc','asdf')
+
+
 
