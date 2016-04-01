@@ -64,4 +64,28 @@ class HammingDistance(object):
 
 
 
+def calcEuclidianDistance(instance,input):
 
+    result=0
+
+    for element1,element2 in zip(instance.num_columns,input.num_columns):
+        result+= pow(element1-element2,2)
+
+    return result
+
+def calcManhattanDistance(instance,input):
+    result=0
+
+    for element1,element2 in zip(instance.num_columns,input.num_columns):
+        result+= abs(element1-element2)
+
+    return result
+
+
+def calcChebychevDistance(instance,input):
+
+    templist=[]
+    for element1,element2 in zip(instance.num_columns,input.num_columns):
+        templist.append(abs(element1-element2))
+
+    return max(templist)

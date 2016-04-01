@@ -15,6 +15,8 @@ class Instance(object):
         self.num_columns = []
         self.str_columns = []
         self.instance_class = ""
+        self.grupo=0
+        self.qtd=0
 
         for i,j in zip(columns,header):
             if(j == "num"):
@@ -23,6 +25,11 @@ class Instance(object):
                 self.str_columns.append(i);
             elif(j == "class"):
                 self.instance_class = i;
+    def reset_attrs(self):
+        for i,eInt in enumerate(self.num_columns):
+
+            self.num_columns[i]=0.0
+
 
     def normalize(self,min,max):
         for i in range(len(min)):
@@ -45,10 +52,12 @@ class Instances(object):
         #Abre o arquivo
         file = open(file,'rb')
         files=list(csv.reader(file,delimiter=','))
+
         self.header=files[0]
 
         #Alimenta o dataset
         for a in range(1,len(files)):
+
             self.data_set.append(Instance(files[a],self.header))
 
         #Normaliza o dataset
