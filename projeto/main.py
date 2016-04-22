@@ -7,8 +7,13 @@ from projeto.kmeans import KMeans
 
 instancias = Instances('fertility_Diagnosisnormalized.csv')
 
-kmeans=KMeans(instancias,2)
+kmeans=KMeans(instancias,5)
 kmeans.setDistanceFunction(valor="3")
 evaluation = Evaluation(kmeans,instancias)
-for grupo in evaluation.multipleRuns(30):
-    print grupo
+resultado= evaluation.multipleRuns(1)
+
+# for g1,g2 in zip(resultado[0],resultado[1]):
+#     print "Grupo 1: %s  - Grupo 2: %s"%(g2,g1)
+
+print evaluation.indiceDaviesBouldin(0,1)
+evaluation.maxDaviesBouldin(0)

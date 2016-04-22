@@ -9,7 +9,7 @@ class Instance(object):
     instance_class = ""
 
     def __str__(self):
-        return "%s %s %s"%(self.num_columns,self.str_columns,self.instance_class)
+        return "%s %s %s -- grupo: %s"%(self.num_columns,self.str_columns,self.instance_class,self.grupo)
 
     def __init__(self,columns,header):
         self.num_columns = []
@@ -17,6 +17,7 @@ class Instance(object):
         self.instance_class = ""
         self.grupo=0
         self.qtd=0
+        self.distanciaMedia=0
 
         for i,j in zip(columns,header):
             if(j == "num"):

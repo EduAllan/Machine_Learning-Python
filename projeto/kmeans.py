@@ -22,7 +22,15 @@ class KMeans(object):
             tempCentroid=copy.deepcopy(self.centroides)
             self.recalculaCentroides()
             self.defineGrupos()
-            if (self.calcDistance(self.centroides[0],tempCentroid[0]) == 0.0): break
+            parada=0
+
+            for ctemp,cent in zip(tempCentroid,self.centroides):
+
+                if (self.calcDistance(ctemp,cent) == 0.0):
+                    parada+=1
+
+            if parada == len(tempCentroid):
+                break
 
             # print self.calcEuclidianDistance(tempCentroid[0],self.centroides[0])
 
@@ -62,6 +70,11 @@ class KMeans(object):
 
     def defineGrupos(self):
         # print self.centroides[1]
+
+        #reseta a distancia media do centroide, ja que o grupo ira mudar
+        for clean in self.centroides:
+            clean.distanciaMedia=0
+
         for instance in self.instances.data_set:
             pertenceGrupo=0
 
@@ -75,8 +88,13 @@ class KMeans(object):
                     tempGrupo=grupo
 
             instance.grupo=tempGrupo
-            self.centroides[tempGrupo].qtd+=1
+            centroide=self.centroides[tempGrupo]
+            centroide.qtd+=1
+            centroide.distanciaMedia+=menorDistancia
 
+        #Realiza a media da distancia do grupo para cada centroide
+        for cent in self.centroides:
+            cent.distanciaMedia/=cent.qtd
         # for i in range(self.k):
         #     print self.centroides[i].qtd
         #
