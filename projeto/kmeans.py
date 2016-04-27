@@ -94,7 +94,10 @@ class KMeans(object):
 
         #Realiza a media da distancia do grupo para cada centroide
         for cent in self.centroides:
-            cent.distanciaMedia/=cent.qtd
+            try:
+                cent.distanciaMedia/=cent.qtd
+            except:
+                cent.distanciaMedia=0
         # for i in range(self.k):
         #     print self.centroides[i].qtd
         #
@@ -110,6 +113,7 @@ class KMeans(object):
             tempCentroid=copy.deepcopy(self.instances.data_set[indice])
 
             tempCentroid.qtd=0
+            tempCentroid.grupo=ponto
             self.centroides.append(tempCentroid)
 
 
